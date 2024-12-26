@@ -4,7 +4,7 @@ const cors = require('cors');
 const mysql = require('mysql');
 const db = require('./src/utile/db'); // Your database utility file
 const app = express();
-const port = 6700;
+const port = 8080;
 
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(cors()); // Middleware to handle CORS

@@ -3,17 +3,20 @@ const jwt = require('jsonwebtoken');
 const db = require('../utile/db'); // Import your database utility
 
 // Register user
-// exports.register = async (req, res) => {
-//   try {
-//     const { user_names, user_email,user_pass } = req.body;
-//     const hashedPassword = await bcrypt.hash(user_pass, 8);
-//     const query = 'INSERT INTO users (user_name, user_email,user_password) VALUES (?, ?, ?)';
-//     await db.query(query, [user_names, user_email, hashedPassword]);
-//     res.status(201).send('User registered successfully');
-//   } catch (error) {
-//     res.status(500).send('Error registering user');
-//   }
-// };
+exports.GetUsers = async (req, res) => {
+  const query = 'SELECT * FROM users';
+  
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching users:', err.message);
+      return res.status(500).json({ error: 'Error fetching users' });
+    }
+    res.status(200).json(results); // Send the retrieved rows as JSON
+  });
+};
+
+
+
 
 exports.register = async (req, res) => {
   try {

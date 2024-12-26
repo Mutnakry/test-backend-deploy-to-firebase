@@ -4,8 +4,8 @@ const authController = require('../controller/authController'); // Adjust path a
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
-// router.get('/protected', authController.verifyToken, (req, res) => {
-//   res.status(200).send('This is a protected route.');
-// });
+router.get('/', authController.GetUsers);
+
+
 
 module.exports = router;
